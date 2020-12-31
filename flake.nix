@@ -67,8 +67,8 @@
         unpackPhase = "dpkg-deb --fsys-tarfile $src | tar -x --no-same-permissions --no-same-owner";
 
         preConfigure = ''
-        cp ${./MacFSGB2312.ttf} opt/onlyoffice/desktopeditors/fonts/.
-        cp ${./WeibeiSC-Bold.otf} opt/onlyoffice/desktopeditors/fonts/.
+        cp ${./all-fonts}/* opt/onlyoffice/desktopeditors/fonts/.
+        cp ${noto-fonts-emoji}/share/fonts/noto/* opt/onlyoffice/desktopeditors/fonts/.
         '';
         installPhase = ''
         mkdir -p $out/share
