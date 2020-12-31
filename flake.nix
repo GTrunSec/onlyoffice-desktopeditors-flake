@@ -73,11 +73,14 @@
         installPhase = ''
         mkdir -p $out/share
         mkdir -p $out/{bin,lib}
-        mv usr/bin/* $out/bin
         mv usr/share/* $out/share/
         mv opt/onlyoffice/desktopeditors $out/share
 
         ln -s $out/share/desktopeditors/DesktopEditors $out/bin/DesktopEditors
+
+        wrapProgram $out/bin/DesktopEditors \
+        --set QT_XKB_CONFIG_ROOT ${xkeyboard_config}/share/X11/xkb \
+        --set QTCOMPOSE ${xorg.libX11.out}/share/X11/locale
 
         substituteInPlace $out/share/applications/onlyoffice-desktopeditors.desktop \
           --replace "/usr/bin/onlyoffice-desktopeditor" "$out/bin/DesktopEditors"
