@@ -83,7 +83,7 @@
         --set QTCOMPOSE ${xorg.libX11.out}/share/X11/locale
 
         substituteInPlace $out/share/applications/onlyoffice-desktopeditors.desktop \
-          --replace "/usr/bin/onlyoffice-desktopeditor" "$out/bin/DesktopEditors"
+          --replace "/usr/bin/onlyoffice-desktopeditor" "$out/bin/DesktopEditor"
           '';
 
         preFixup = ''
